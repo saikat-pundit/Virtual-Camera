@@ -28,9 +28,21 @@ jobs:
       - name: Build Release APK
         run: gradle assembleRelease
 
-      - name: Upload APK Artifact
+      # --- ADD THESE STEPS TO SIGN THE APK ---
+      - name: Generate Debug Keystore
+        run: |
+          keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+
+      - name: Sign APK
+        run: |
+          # Find the apksigner tool dynamically and sign the APK
+          APKSIGNER=$(find /usr/local/lib/android/sdk/build-tools -name apksigner | head -n 1)
+          $APKSIGNER sign --ks debug.keystore --ks-pass pass:android --key-pass pass:android app/build/outputs/apk/release/app-release-unsigned.apk
+          mv app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/app-release-signed.apk
+
+      - name: Upload Signed APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VirtualCamera-Release-APK
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          name: VirtualCamera-Signed-APK
+          path: app/build/outputs/apk/release/app-release-signed.apk
           retention-days: 7
