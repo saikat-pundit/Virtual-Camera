@@ -10,18 +10,23 @@ buildscript {
     }
 }
 
-// This block provides the global variables that opensdk requires to build
+// Comprehensive variables block to completely satisfy the opensdk engine
 ext {
     compileSdkVersion = 33
     minSdkVersion = 24
     targetSdkVersion = 33
     versionCode = 1
     versionName = "1.0"
-    masterPkg = "virtual.camera.app"
     
-    // Missing variables required by opensdk
+    // The specific SDK variables
+    masterPkg = "virtual.camera.app"
     localTest = false 
     isMasterPkg = true 
+    hackJarName = "hack.jar" 
+    
+    // Preemptively adding build tools versions just in case it asks for these next!
+    buildToolsVersion = "33.0.0"
+    supportLibraryVersion = "28.0.0"
 }
 
 task clean(type: Delete) {
