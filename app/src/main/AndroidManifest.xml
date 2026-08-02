@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="virtual.camera.app">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Virtual Camera"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
-        
-        <!-- Xposed Module Configuration -->
-        <meta-data
-            android:name="xposedmodule"
-            android:value="true" />
-        <meta-data
-            android:name="xposeddescription"
-            android:value="Replaces live camera feed with a selected gallery image/video." />
-        <meta-data
-            android:name="xposedminversion"
-            android:value="53" />
 
         <activity
             android:name=".MainActivity"
@@ -30,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
+
     </application>
+
 </manifest>
