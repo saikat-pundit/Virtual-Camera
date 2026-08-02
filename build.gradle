@@ -10,6 +10,16 @@ buildscript {
     }
 }
 
+// This block provides the global variables that opensdk requires to build
+ext {
+    compileSdkVersion = 33
+    minSdkVersion = 24
+    targetSdkVersion = 33
+    versionCode = 1
+    versionName = "1.0"
+    masterPkg = "virtual.camera.app"
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
