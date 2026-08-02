@@ -11,6 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
         
+        <!-- Xposed Module Configuration -->
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="Replaces live camera feed with a selected gallery image/video." />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="53" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,5 +32,4 @@
         </activity>
         
     </application>
-
 </manifest>
