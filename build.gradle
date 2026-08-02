@@ -23,7 +23,10 @@ ext {
     localTest = false 
     isMasterPkg = true 
     hackJarName = "hack.jar" 
-    assistPkg = "virtual.camera.assist" // <-- Added this missing variable
+    assistPkg = "virtual.camera.assist"
+    
+    // Java version required by opensdk line 47
+    javaVersion = "1.8"
     
     // Build tools versions
     buildToolsVersion = "33.0.0"
