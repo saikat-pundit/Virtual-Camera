@@ -19,8 +19,9 @@ ext {
     versionName = "1.0"
     masterPkg = "virtual.camera.app"
     
-    // Added the missing variable that opensdk needs
+    // Missing variables required by opensdk
     localTest = false 
+    isMasterPkg = true 
 }
 
 task clean(type: Delete) {
